@@ -4,7 +4,7 @@ using System.Text;
 
 namespace appCEP.Model
 {
-    internal class Cidade
+    public class Cidade
     {
         public int id_cidade { get; set; }
         public string descricao { get; set; }
