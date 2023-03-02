@@ -72,5 +72,26 @@ namespace appCEP.Service
             }
             return arr_cidade;
         }
+
+        public static async Task<List<Logradouro>> GetLogradourosByBairroAndIdCidade(string bairro, int id_cidade)
+        {
+            List<Logradouro> arr_logradouros = new List<Logradouro>();
+
+            using (HttpClient client = new HttpClient()) 
+            {
+                HttpResponseMessage response = await client.GetAsync("https://cep.metoda.com.br/cep/by-logradouro?logradouro?logradouro=Rua");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = response.Content.ReadAsStringAsync().Result;
+
+                    arr_logradouros = JsonConvert.DeserializeObject<List<Logradouro>>(json);
+                }
+                else
+                    throw new Exception(response.RequestMessage.Content.ToString());
+ 
+            }
+            return arr_logradouros;
+        }
     }
 }

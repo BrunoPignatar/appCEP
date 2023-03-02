@@ -36,7 +36,7 @@ namespace appCEP.View
 
                 string estado_selecionado = disparador.SelectedItem as string;
 
-                List<Cidade> arr_cidades = await DataService.GetCidadesByEstado;
+                List<Cidade> arr_cidades = await DataService.GetCidadesByEstado(estado_selecionado);
 
                 lista_cidades.Clear();
 
